@@ -1,0 +1,34 @@
+//Request for ajax
+
+// generate payload to send with the ajax request
+paylod = {
+	// read pizza_id from html input element
+	"pizza_id" : document.getElementbyId("pizza_id"),
+	// read order date from html input element
+	"date" : document.getElementbyId("order_date"),
+	// read delivery_time from html input element
+	"delivery_time" : document.getElementbyId("delivery_time"),
+	// read extra_instruction from html input element
+	"extra_instruction" : document.getElementbyId("extra_instruction")
+}	
+
+// create ajax post request
+$.ajax({
+	// ajax request type
+	type: "POST",
+	// ajax request url
+	url: "../Webservices/PizzaService.asmx/GetPizzaOrders",
+	// data to send with request
+	data: "payload,
+	// ajax request content type and charset is text encoding format
+	contentType: "application/json; charset=utf-8",
+	// data type of the data sent with request 
+	dataType: "json",
+	// execute function if the ajax request is successful
+	success: function(result){
+	//given alert/pop-up with the result
+	alert(result.d);
+	// print the result in console
+	console.log(result);
+	}
+});
