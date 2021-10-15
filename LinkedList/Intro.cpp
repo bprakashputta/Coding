@@ -335,6 +335,68 @@ struct Node* reverseList(struct Node* head){
 return rev;
 }
 
+
+
+// struct Node* removeDuplicates(struct Node* llist) {
+// // This code runs into runtime error
+//     if(llist == NULL){
+//         return NULL;
+//     } else if(llist->next == NULL){
+//         return llist;
+//     }
+    
+//     Node* curr = llist;
+//     curr = curr->next;
+//     while(curr->next !=NULL){
+//         if(curr->data == curr->next->data){
+//             Node* nl = curr;
+//             while(nl!=NULL && nl->data == curr->data){
+//                 if(nl->next!=NULL && nl->next->data != curr->data){
+//                     curr->next = nl->next;
+//                     break;
+//                 }else{
+//                     nl = nl->next;
+//                 }
+//             }
+//         }else{
+//             curr = curr->next;
+//         }
+//     }
+// return llist;
+// }
+
+
+Node* removeDuplicates(Node* llist) {
+    if(llist == NULL){
+        return NULL;
+    } else if(llist->next == NULL){
+        return llist;
+    }
+    
+    Node* curr = llist;
+    Node* res = NULL;
+    Node* ans = res;
+    curr = curr->next;
+    while(curr->next !=NULL){
+        cout<<"HI"<<endl;
+        if(res == NULL){
+            // cout<<"HI"<<endl;
+            res->next = new Node(curr->data);
+                cout<<"HI"<<endl;
+            res = res->next;
+            ans = res;
+            // curr = curr->next;
+        }else{
+            if(curr->data != res->data){
+                res->next = new Node(curr->data);
+                res = res->next;
+            }
+        }
+        curr = curr->next;
+    }
+return ans;
+}
+
 int main(){
 
     int arr[] = {10, 34, 23, 54, 13};
@@ -356,9 +418,12 @@ int main(){
     // printList(mergeList);
 
 
-    struct Node* l = createList(arr2, size2);
-    printList(l);
-    struct Node* revl = reverseList(l);
-    printList(revl);
+    // struct Node* l = createList(arr2, size2);
+    // printList(l);
+    // struct Node* revl = reverseList(l);
+    // printList(revl);
+
+    struct Node* list1 = createList(arr1, size1);
+    printList(removeDuplicates(list1));
     return 0;
 }
