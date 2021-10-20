@@ -235,6 +235,39 @@ struct Node* mergeTwoLists(struct Node* l1, struct Node* l2){
 return l1;
 }
 
+int findMergeNode(Node* llist1, Node* llist2) {
+    if(llist1==NULL || llist2==NULL){
+        return 0;
+    }
+    Node* head1 = llist1;
+    Node* head2 = llist2;
+    while(head1!=NULL && head2!=NULL){
+        Node* temp = head2;
+        while(temp!=NULL){    
+            if(head1 == temp){
+                return head1->data;
+            }
+            temp = temp->next;
+        }
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+    head1 = llist1;
+    head2 = llist2;
+    while(head1!=NULL && head2!=NULL){
+        Node* temp = head1;
+        while(temp!=NULL){    
+            if(head2 == temp){
+                return head2->data;
+            }
+            temp = temp->next;
+        }
+        head1 = head1->next;
+        head2 = head2->next;
+    }
+return -1;
+}
+
 struct Node* sortList(struct Node* head){
     struct Node* curr = head; 
     struct Node* itr = NULL;

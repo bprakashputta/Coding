@@ -129,7 +129,3 @@ DoublyLinkedListNode* reverse(DoublyLinkedListNode* llist) {
     }
 return llist;
 }
-
-int main(){
-    
-}
