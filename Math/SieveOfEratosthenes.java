@@ -87,5 +87,3 @@ class SieveOfEratosthenes
         printAllPrimeNumbersUptoN(primeNums);
 	}
 }
-
-// This code has been contributed by Amit Khandelwal.
